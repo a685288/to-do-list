@@ -10,16 +10,16 @@ export default {
 </script>
 <template>
   <div class="div">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <h1 class="title">To do list</h1>
+    <div class="titleback"> 
+      <h1 class="title">To do list</h1>
+    </div>
     <button>全部</button>
     <button>已完成</button>
     <button>未完成</button>
     <br />
-    <input type="text" placeholder="加入一個新工作" class="input" />
+    <input class="input" type="text" placeholder="加入一個新工作" />
     <ul>
       <list></list>
-
     </ul>
   </div>
 </template>
@@ -28,8 +28,23 @@ export default {
   margin: 0px 20%;
   background-color: #f4eee1;
 }
+
+.titleback{
+ background-color: #90604c;
+ width: 50%;
+ margin: 10px auto;
+}
 .title {
-  
+  color: #ffffff;
+}
+.input {
+  width: 40%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  color: #525252;
+  height: 30px;
+  padding: 5px;
+  margin: 10px;
 }
 button {
   border: 1px solid #ccc;
