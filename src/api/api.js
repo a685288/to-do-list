@@ -3,7 +3,7 @@ import axios from 'axios';
 const userAxios = axios.create({
     headers: { "Content-Type": "application/json" }
 })
-const apiUrl = 'https://fc51de25f212.ngrok.io/todos'
+const apiUrl = 'https://25ae224d9a7a.ngrok.io/todos'
 
 /** create todo
  * @param { String } thing
