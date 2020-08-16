@@ -19,8 +19,7 @@ export default {
   data() {
     return {
       newTodo: "",
-      listdata: [],
-      isFinish: false,
+      listdata: []
     };
   },
   methods: {
@@ -89,7 +88,6 @@ export default {
         });
     },
     finTodoItem(id) {
-      this.isFinish = !this.isFinish;
       doneTodo(id)
         .then((res) => {
           console.log(this.isFinish)
@@ -136,7 +134,7 @@ export default {
         @finTodo="finTodoItem"
         @delTodo="delTodoItem"
         class="list"
-        v-bind:class="{fin:this.isFinish }"
+        v-bind:class="{ fin: item.isDone == 1 }"
       ></list>
     </ul>
   </div>
