@@ -5,34 +5,35 @@ const userAxios = axios.create({
 })
 const apiUrl = 'https://25ae224d9a7a.ngrok.io/todos'
 
+/** get todo data
+ * @returns { int } id
+ * @returns { String } thing
+ * @returns { int } isDone
+ */
+export const getTodo = () => userAxios.get(`${apiUrl}`);
+
 /** create todo
  * @param { String } thing
  */
-export const addTodo = (params) => userAxios.post(`${apiUrl}`, params);
-
-/** get todo data
- * @param { int } id
- * @param { String } thing
- * @param { int } isDone 
- */
-export const getTodo = () => userAxios.get(`${apiUrl}`);
+export const addTodo = (params) => {};
 
 /** gat todo data hava status
  * @param { int } status // 0/1 未完成/已完成 
  */
-export const getStatus = (status) => userAxios.get(`${apiUrl}/${status}`);
+export const getStatus = (status) => {};
 
 /** delete todo
- * 
+ * @param { int } id
  */
-export const delTodo = (id) => userAxios.delete(`${apiUrl}/${id}`);
+export const delTodo = (id) => {};
 
 /** update done todo
- * 
+ * @param { int } id
  */
-export const doneTodo = (id) => userAxios.put(`${apiUrl}/${id}`);
+export const doneTodo = (id) => {};
 
-/** update todo content
- * 
+/** update todo thing
+ * @param { int } id
+ * @param { thing } thing
  */
-export const updateTodo = (id, params) => userAxios.put(`${apiUrl}/info/${id}`, params);
+export const updateTodo = (id, params) => {};

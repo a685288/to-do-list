@@ -6,7 +6,7 @@ export default {
   },
   data() {
     return {
-      isEdit: false,
+      // isEdit: false,
     };
   },
   methods: {
@@ -15,14 +15,16 @@ export default {
         alert("請輸入文字");
       } else {
         this.isEdit = !this.isEdit;
-        this.$emit("editTodo", id, thing);
+
       }
     },
+    // 完成資料
     finish(id) {
-      this.$emit("finTodo", id);
+
     },
+    // 刪除資料
     deleteTodo(id) {
-      this.$emit("delTodo", id);
+
     },
   },
 };

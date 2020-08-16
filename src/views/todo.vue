@@ -1,20 +1,14 @@
 <script>
 import list from "@/components/list.vue";
-import {
-  getTodo,
-  addTodo,
-  getStatus,
-  delTodo,
-  doneTodo,
-  updateTodo,
-} from "@/api/api.js";
+import { getTodo, addTodo, getStatus, delTodo, doneTodo, updateTodo } from "@/api/api.js";
 export default {
   name: "index",
   components: {
     list,
   },
+  // 與element連接後觸發
   mounted() {
-    this.allTodo();
+    
   },
   data() {
     return {
@@ -23,88 +17,39 @@ export default {
     };
   },
   methods: {
+    // 取的所有資料
     allTodo() {
-      getTodo()
-        .then((res) => {
-          if (res.status == 200) {
-            this.listdata = res.data.data;
-          }
-        })
-        .catch((err) => {
-          alert(`error: ${err}`);
-        });
+     
     },
+    // 新增新資料
     addNewTodo() {
-      addTodo({
-        thing: this.newTodo,
-      })
-        .then((res) => {
-          this.allTodo();
-          this.newTodo = "";
-        })
-        .catch((err) => {
-          alert(`error ${err}`);
-        });
+      
     },
+    // 取的不同狀態的資料
     changeTodoList(status) {
       switch (status) {
+        // 未完成
         case "0":
-          getStatus(0)
-            .then((res) => {
-              if (res.data.status.code == 404) {
-                this.listdata = [];
-              } else {
-                this.listdata = res.data.data;
-              }
-            })
-            .catch((err) => {
-              alert(`error ${err}`);
-            });
+         
           break;
+        // 已完成
         case "1":
-          getStatus(1)
-            .then((res) => {
-              if (res.data.status.code == 404) {
-                this.listdata = [];
-              } else {
-                this.listdata = res.data.data;
-              }
-            })
-            .catch((err) => {
-              alert(`error ${err}`);
-            });
+          
           break;
       }
     },
+    // 編輯現有資料
     editTodoItem(id, thing) {
-      updateTodo(id, {
-        thing: thing,
-      })
-        .then((res) => {
-          this.allTodo();
-        })
-        .catch((err) => {
-          alert(`error ${err}`);
-        });
+     
     },
+    // 完成資料
     finTodoItem(id) {
-      doneTodo(id)
-        .then((res) => {
-          console.log(this.isFinish)
-          this.allTodo();
-        })
-        .catch((err) => {
-          alert(`error ${err}`);
-        });
+      
+       
     },
+    // 刪除資料
     delTodoItem(id) {
-      delTodo(id)
-        .then((res) => {
-          this.allTodo();
-        })
-        .catch((err) => {
-          alert(`error ${err}`);
-        });
+     
     },
   },
 };
@@ -118,24 +63,9 @@ export default {
     <button @click="changeTodoList('1')">已完成</button>
     <button @click="changeTodoList('0')">未完成</button>
     <br />
-    <input
-      class="input"
-      type="text"
-      placeholder="加入一個新工作"
-      v-model="this.newTodo"
-      @keyup.enter="addNewTodo"
-    />
+    <input class="input" type="text" placeholder="加入一個新工作" v-model="this.newTodo" @keyup.enter="addNewTodo" />
     <ul class="ul">
-      <list
-        v-for="(item) in this.listdata"
-        :key="item.id"
-        :todo="item"
-        @editTodo="editTodoItem"
-        @finTodo="finTodoItem"
-        @delTodo="delTodoItem"
-        class="list"
-        v-bind:class="{ fin: item.isDone == 1 }"
-      ></list>
+      <list v-for="(item) in this.listdata" :key="item.id" :todo="item" class="list" v-bind:class="{ fin: item.isDone == 1 }" />
     </ul>
   </div>
 </template>
