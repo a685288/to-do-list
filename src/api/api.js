@@ -1,9 +1,13 @@
 import axios from 'axios';
 
 const userAxios = axios.create({
-    headers: { "Content-Type": "application/json" }
+    // baseURL: "/api",
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": 'true'
+    }
 })
-const apiUrl = 'https://25ae224d9a7a.ngrok.io/todos'
+const apiUrl = '/api'
 
 /** create todo
  * @param { String } thing
