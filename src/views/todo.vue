@@ -8,7 +8,7 @@ export default {
   },
   // 與element連接後觸發
   mounted() {
-    
+    this.allTodo();
   },
   data() {
     return {
@@ -19,7 +19,15 @@ export default {
   methods: {
     // 取的所有資料
     allTodo() {
-     
+       getTodo()
+        .then((res) => {
+          if (res.status == 200) {
+            this.listdata = res.data.data;
+          }
+        })
+        .catch((err) => {
+          alert(`error: ${err}`);
+        });
     },
     // 新增新資料
     addNewTodo() {

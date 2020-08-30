@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const userAxios = axios.create({
-    // baseURL: "/api/todo",
+    // baseURL: "/api",
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": 'true'
     }
 })
-const apiUrl = "api/todo";
+const apiUrl = "/api"
 
 /** get todo data
  * @returns { int } id
